@@ -2,6 +2,7 @@
 #include <exdisp.h>
 #include <comdef.h>
 #include "ControlEx.h"
+#include <direct.h>
 
 class C360SafeFrameWnd : public CWindowWnd, public INotifyUI
 {
@@ -243,6 +244,10 @@ private:
 
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*lpCmdLine*/, int nCmdShow)
 {
+
+	char szPath[128] = { 0 };
+	getcwd(szPath,128);
+	printf("curPath:%s\n", szPath);
 	CPaintManagerUI::SetInstance(hInstance);
 	CPaintManagerUI::SetResourcePath(CPaintManagerUI::GetInstancePath() + _T("skin"));
 	CPaintManagerUI::SetResourceZip(_T("360SafeRes.zip"));
